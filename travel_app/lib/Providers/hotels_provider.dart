@@ -75,4 +75,10 @@ class HotelsProvider extends ChangeNotifier {
     {"title" : "Gym","icon" : "Assets/Icons/dumbbell.png"},
     {"title" : "Cafe","icon" : "Assets/Icons/coffee-cup.png"},
   ];
+
+  void toogleFav(Hotel hotel){
+    hotel.toogleFavourites();
+    notifyListeners();
+  }
+
 }

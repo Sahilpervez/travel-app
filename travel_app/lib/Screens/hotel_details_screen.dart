@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:travel_app/Models/app_styles.dart';
 import 'package:travel_app/Models/hotels.dart';
+import 'package:travel_app/Providers/hotels_provider.dart';
 import 'package:travel_app/animations/fade_animation.dart';
 
 import '../Utils/offer_items.dart';
@@ -52,8 +54,8 @@ class HotelDetailsScreen extends StatelessWidget {
                     child: ListView(
                       // scrollDirection: Axis.vertical,
 
-                      padding:
-                          const EdgeInsets.only(top: 10,bottom: 100, right: 20,left: 20),
+                      padding: const EdgeInsets.only(
+                          top: 10, bottom: 100, right: 20, left: 20),
                       // child: Padding(
                       //   padding: const EdgeInsets.symmetric(
                       //     horizontal: 20,
@@ -204,37 +206,49 @@ class HotelDetailsScreen extends StatelessWidget {
                                 children: [
                                   Container(
                                     margin: const EdgeInsets.only(right: 10),
-                                    height: 60,width: 60,
+                                    height: 60,
+                                    width: 60,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(
-                                        color: Colors.grey
-                                      )
-                                    ),
+                                        borderRadius: BorderRadius.circular(15),
+                                        border: Border.all(color: Colors.grey)),
                                     child: const Center(
                                       child: Image(
-                                          image: AssetImage(
-                                            "Assets/Icons/businesswoman-with-glasses-crossed-arms.jpg",
-                                          ),
+                                        image: AssetImage(
+                                          "Assets/Icons/businesswoman-with-glasses-crossed-arms.jpg",
+                                        ),
                                         fit: BoxFit.contain,
                                       ),
                                     ),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(hotel.owner,style: const TextStyle(fontWeight: FontWeight.w600,fontSize: 17),),
+                                      Text(
+                                        hotel.owner,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 17),
+                                      ),
                                       Row(
                                         children: [
-                                          const Icon(Icons.star_rounded,color: Color(0xffFFA807),),
-                                          Text("${hotel.ownerRating}",
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                          ),),
-                                          Text("(${(hotel.ownerReviews / 1000).toStringAsPrecision(2)}K reviews)",style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.grey.shade700,
-                                          ),)
+                                          const Icon(
+                                            Icons.star_rounded,
+                                            color: Color(0xffFFA807),
+                                          ),
+                                          Text(
+                                            "${hotel.ownerRating}",
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          Text(
+                                            "(${(hotel.ownerReviews / 1000).toStringAsPrecision(2)}K reviews)",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.grey.shade700,
+                                            ),
+                                          )
                                         ],
                                       )
                                     ],
@@ -242,7 +256,8 @@ class HotelDetailsScreen extends StatelessWidget {
                                 ],
                               ),
                               Container(
-                                height: 50,width: 50,
+                                height: 50,
+                                width: 50,
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   color: const Color(0xfff69a2e),
@@ -250,15 +265,13 @@ class HotelDetailsScreen extends StatelessWidget {
                                 ),
                                 child: const Center(
                                   child: Image(
-                                    image: AssetImage(
-                                      "Assets/Icons/messenger.png",
-                                    ),
-                                    color: Colors.white
-                                  ),
+                                      image: AssetImage(
+                                        "Assets/Icons/messenger.png",
+                                      ),
+                                      color: Colors.white),
                                 ),
                               ),
                             ],
-
                           ),
                         )
                       ],
@@ -273,7 +286,8 @@ class HotelDetailsScreen extends StatelessWidget {
                 child: Container(
                   height: 90,
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   // color: const Color(0xffF6EDE5),
                   child: ElevatedButton(
                     onPressed: () {},
@@ -283,16 +297,99 @@ class HotelDetailsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(22),
                       ),
                     ),
-                    child: const Text('Book Now',style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20
-                    ),),
+                    child: const Text(
+                      'Book Now',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
                   ),
                 ),
               ),
+              Positioned(
+                top: 10,
+                left: 20,
+                child: Container(
+                  width: MediaQuery.of(context).size.width - 50,
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                          height: 40,
+                          width: 40,
+                          child: Center(
+                            child: Icon(Icons.arrow_back),
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      InkWell(
+                        onTap: () {
+                          print("Share Pressed");
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                          height: 40,
+                          width: 40,
+                          child: Center(
+                            child: Icon(Icons.share),
+                          ),
+                        ),
+                      ),
+                      LikeButton(hotel: hotel),
+                    ],
+                  ),
+                ),
+              )
             ],
           );
         }),
+      ),
+    );
+  }
+}
+
+class LikeButton extends StatefulWidget {
+  LikeButton({
+    super.key,
+    required this.hotel,
+  });
+  Hotel hotel;
+  @override
+  State<LikeButton> createState() => _LikeButtonState();
+}
+
+class _LikeButtonState extends State<LikeButton> {
+  @override
+  Widget build(BuildContext context) {
+    final func = Provider.of<HotelsProvider>(context).toogleFav;
+    return InkWell(
+      onTap: () {
+        setState(() {
+          func(widget.hotel);
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+        height: 40,
+        width: 40,
+        child: Center(
+          child: (widget.hotel.liked == true)
+              ? Icon(
+                  Icons.favorite_outlined,
+                  color: Colors.red,
+                )
+              : Icon(
+                  Icons.favorite_outline_rounded,
+                ),
+        ),
       ),
     );
   }

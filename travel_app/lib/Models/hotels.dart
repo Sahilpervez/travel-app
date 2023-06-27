@@ -10,6 +10,7 @@ class Hotel {
   final double ownerRating;
   final double ownerReviews;
   final double discount;
+  bool liked;
   Hotel({
     required this.title,
     required this.location,
@@ -22,5 +23,10 @@ class Hotel {
     required this.ownerRating,
     required this.ownerReviews,
     this.discount = 0,
+    this.liked = false,
   });
+
+  void toogleFavourites(){
+    liked = ! liked;
+  }
 }
