@@ -35,6 +35,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  provider:
+  ionicons:
+  carousel_slider:
+  lottie:
+  readmore:
+#  flat_icons_flutter: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -59,9 +65,21 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+
+  assets:
+    - Assets/santorini_img/santorini-g2.jpg
+    - Assets/santorini_img/santorini-g3.jpg
+    - Assets/santorini_img/santorini-g4.jpg
+    - Assets/santorini_img/Santorini-Greece.jpg
+    - Assets/hotel_royal_img/hotel_royal_1.jpg
+    - Assets/hotel_royal_img/hotel_royal_2.jpeg
+    - Assets/hotel_royal_img/hotel_royal_3.webp
+    - Assets/bali_hotel_img/bali_hotel_2.jpg
+    - Assets/bali_hotel_img/bali_hotel_3.jpg
+    - Assets/bali_hotel_img/bali_hotel_4.jpg
+    - Assets/bali_hotel_img/BaliHotel.webp
+    - Assets/SearchIcon.png
+    - Assets/Icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -85,6 +103,17 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: LexendDeca
+      fonts:
+        - asset: Assets/Lexend_Deca/static/LexendDeca-Regular.ttf
+        - asset: Assets/Lexend_Deca/static/LexendDeca-Bold.ttf
+          weight: 700
+        - asset: Assets/Lexend_Deca/static/LexendDeca-SemiBold.ttf
+          weight: 500
+    - family: WixMadeForText
+      fonts:
+        - asset: Assets/Wix_Madefor_Text/static/WixMadeforText-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
