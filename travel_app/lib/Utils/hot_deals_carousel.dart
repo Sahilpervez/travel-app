@@ -7,11 +7,11 @@ import '../Models/hotels.dart';
 import '../Providers/hotels_provider.dart';
 
 class CarouselBuilder extends StatelessWidget {
-  CarouselBuilder({
+  const CarouselBuilder({
     super.key,
     required this.constraints,
   });
-  BoxConstraints constraints;
+  final BoxConstraints constraints;
   @override
   Widget build(BuildContext context) {
     final hotdeals = Provider.of<HotelsProvider>(context).hotels;
@@ -41,13 +41,13 @@ class CarouselBuilder extends StatelessWidget {
 }
 
 class HotDealsElement extends StatelessWidget {
-  HotDealsElement({
+  const HotDealsElement({
     super.key,
     required this.constraints,
     required this.currHotel,
   });
-  BoxConstraints constraints;
-  Hotel currHotel;
+  final BoxConstraints constraints;
+  final Hotel currHotel;
   @override
   Widget build(BuildContext context) {
     return Container(

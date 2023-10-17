@@ -42,11 +42,11 @@ class PopularHotelsBarBuilder extends StatelessWidget {
 }
 
 class PopularHotels extends StatelessWidget {
-  PopularHotels({
+  const PopularHotels({
     super.key,
     required this.currHotel,
   });
-  Hotel currHotel;
+  final Hotel currHotel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
